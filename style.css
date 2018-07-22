@@ -1,0 +1,96 @@
+html, body {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: sans-serif;
+    font-weight: 100;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+::-webkit-input-placeholder {
+    color: #aaa;
+}
+
+::-moz-placeholder {
+    color: #aaa;
+}
+
+:-ms-input-placeholder {
+    color: #aaa;
+}
+
+:-moz-placeholder {
+    color: #aaa;
+}
+
+#page {
+    text-align: center;
+    margin: 70px auto;
+    max-width: 800px;
+}
+
+#page h1 {
+    margin: 30px 0 40px 0;
+    font-size: 60px;
+    letter-spacing: 5px;
+    color: #040743;
+}
+
+#page h2 {
+    margin: 20px auto 0 auto;
+    font-size: 20px;
+    color: #7a7a7a;
+    line-height: 30px;
+    max-width: 550px;
+}
+
+#page form {
+    margin: 45px auto 0 auto;
+}
+
+#page form input[type=text] {
+    border: solid #999 1px;
+    font-size: 14px;
+    height: 40px;
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    vertical-align: middle;
+    line-height: 40px;
+    padding-left: 15px;
+    width: 200px;
+}
+
+#page form input[type=submit] {
+    background: #040743;
+    color: #fff;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    vertical-align: middle;
+    line-height: 40px;
+    cursor: pointer;
+    padding: 0 15px;
+    font-size: 14px;
+}
+
+#page #footer {
+    margin-top: 100px;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+#page #footer a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #999;
+}
+
+#page #footer a:hover {
+    color: #000;
+    text-decoration: underline;
+}
