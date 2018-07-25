@@ -92,3 +92,20 @@ html, body {
     color: #040743;
     text-decoration: underline;
 }
+
+.slack-link {
+    display: inherit;
+    margin: 40px auto;
+    font-size: 14px;
+    background-color: #040743;
+    text-decoration: none;
+    width: 230px;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+}
+
+.slack-link:hover {
+    background-color: #7a7a7a;
+}
