@@ -1,0 +1,116 @@
+body {
+  font-size: 18px;
+  font-weight: 100;
+  font-family: sans-serif;
+}
+
+::-webkit-scrollbar { width: 0; }
+
+img.logo {
+  height: 30px;;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+#mock-input-app {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 270px;
+  height: 550px;
+  border: 1px solid;
+  border-radius: 50px;
+  padding: 50px 20px;
+  background-color: black;
+}
+
+#mock-input-app .display {
+  background-color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  overflow: scroll;
+}
+
+button {
+  flex: 1;
+  background-color: #040743;
+  color: white;
+  border: none;
+  padding: 0px;
+  margin-left: 1px;
+  font-size: 14px;
+  font-weight: 100;
+}
+
+button.disabled {
+  background-color: grey;
+}
+
+button.selected {
+  background-color: navajowhite;
+  color: #040743;
+  font-weight: 900;
+}
+
+button:first-child { margin-left: 0; }
+
+div.row {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 0 10%;
+  margin-top: 1px;
+}
+
+div.row:last-of-type {
+  margin-top: auto;
+}
+
+div.row.heading {
+  color: #040743;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  text-decoration: underline;
+}
+
+div.row:first-child { margin-top: 0; }
+
+div.row.navigation {
+  margin-top: 30px;
+}
+
+.slider {
+  flex: 1;
+  display: flex;
+  position: relative;
+}
+
+.slider input {
+  flex: 6;
+}
+
+.slider button {
+  flex: 2;
+  border-radius: 50%;
+}
+
+.slider span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+}
