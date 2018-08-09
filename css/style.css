@@ -1,10 +1,10 @@
 html, body {
-    box-sizing: border-box;
-    margin: 0 5px;
-    font-family: sans-serif;
-    font-weight: 100;
-    text-align: justify;
-    color: #7a7a7a;
+  box-sizing: border-box;
+  margin: 0 5px;
+  font-family: sans-serif;
+  font-weight: 100;
+  text-align: justify;
+  color: #7a7a7a;
 }
 
 *, *:before, *:after { box-sizing: inherit; }
@@ -15,97 +15,97 @@ html, body {
 :-moz-placeholder           { color: #aaa; }
 
 .page {
-    text-align: center;
-    margin: 70px auto;
-    max-width: 800px;
+  text-align: center;
+  margin: 70px auto;
+  max-width: 800px;
 }
 
 .page .logo img {
-    height: 150px;
+  height: 150px;
 }
 
 .page h1 {
-    margin: 30px 0 40px 0;
-    font-size: 60px;
-    letter-spacing: 5px;
-    color: #040743;
-    line-height: 70px;
+  margin: 30px 0 40px 0;
+  font-size: 60px;
+  letter-spacing: 5px;
+  color: #040743;
+  line-height: 70px;
 }
 
 .page h2 {
-    margin: 20px auto 0 auto;
-    font-size: 20px;
-    line-height: 30px;
-    max-width: 550px;
+  margin: 20px auto 0 auto;
+  font-size: 20px;
+  line-height: 30px;
+  max-width: 550px;
 }
 
 .page form {
-    margin: 45px auto 0 auto;
+  margin: 45px auto 0 auto;
 }
 
 .page form input[type=text] {
-    border: solid #999 1px;
-    font-size: 14px;
-    height: 40px;
-    border-radius: 5px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    vertical-align: middle;
-    line-height: 40px;
-    padding-left: 15px;
-    width: 200px;
+  border: solid #999 1px;
+  font-size: 14px;
+  height: 40px;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  vertical-align: middle;
+  line-height: 40px;
+  padding-left: 15px;
+  width: 200px;
 }
 
 .page form input[type=submit] {
-    background: #040743;
-    color: #fff;
-    height: 40px;
-    border: none;
-    border-radius: 5px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    vertical-align: middle;
-    line-height: 40px;
-    padding: 0 15px;
-    font-size: 14px;
-    cursor: pointer;
+  background: #040743;
+  color: #fff;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  vertical-align: middle;
+  line-height: 40px;
+  padding: 0 15px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .page form input[type=submit]:hover {
-    background-color: #7a7a7a;
+  background-color: #7a7a7a;
 }
 
 .page footer {
-    margin-top: 100px;
-    font-size: 14px;
-    letter-spacing: 2px;
+  margin-top: 100px;
+  font-size: 14px;
+  letter-spacing: 2px;
 }
 
 .page footer a {
-    margin: 20px;
-    text-decoration: none;
-    color: #999;
-    cursor: pointer;
+  margin: 20px;
+  text-decoration: none;
+  color: #999;
+  cursor: pointer;
 }
 
 .page footer a:hover {
-    color: #040743;
-    text-decoration: underline;
+  color: #040743;
+  text-decoration: underline;
 }
 
 .slack-link {
-    display: inherit;
-    margin: 40px auto;
-    font-size: 14px;
-    background-color: #040743;
-    text-decoration: none;
-    width: 230px;
-    color: #fff;
-    height: 40px;
-    line-height: 40px;
-    border-radius: 5px;
+  display: inherit;
+  margin: 40px auto;
+  font-size: 14px;
+  background-color: #040743;
+  text-decoration: none;
+  width: 230px;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
 }
 
 .slack-link:hover {
-    background-color: #7a7a7a;
+  background-color: #7a7a7a;
 }
