@@ -2,6 +2,7 @@ body {
   font-size: 18px;
   font-weight: 100;
   font-family: sans-serif;
+  touch-action: manipulation;
 }
 
 ::-webkit-scrollbar { width: 0; }
@@ -25,6 +26,14 @@ img.logo {
   border-radius: 50px;
   padding: 50px 20px;
   background-color: black;
+}
+
+@media only screen and (max-width: 450px) {
+  #mock-input-app {
+    width: 100%;
+    padding: 0;
+    top: 0;
+  }
 }
 
 #mock-input-app .display {
