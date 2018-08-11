@@ -5,29 +5,22 @@ class Game extends React.Component {
     this.minPlayers = 6;
   }
 
-  updateField(e, field) {
-    this.setState({ [field]: e.target.value });
+  isComplete() {
+    return this.props.players;
   }
 
   render() {
     var playerButtons = [];
 
     for (var i = this.maxPlayers; i >= this.minPlayers; i--) {
-      var selected = "";
-      if (parseInt(this.props.players) === i) {
-        selected = "selected";
-      }
-
-      var button = (
-        <button
+      playerButtons.push(
+        <Button
           value={i}
           onClick={this.props.updatePlayers}
-          className={selected}
-        >
-          {i}
-        </button>
+          selected={parseInt(this.props.players) === i}
+          text={i}
+        />
       );
-      playerButtons.push(button);
     }
 
     return (
@@ -36,12 +29,21 @@ class Game extends React.Component {
 
         <Heading text="type" />
         <Row>
-          <button className="selected">cash</button>
-          <button className="disabled">tournament</button>
+          <Button text="cash" selected="true" />
+          <Button text="tournament" disabled="true" />
         </Row>
 
         <Heading text="players" />
         <Row>{playerButtons}</Row>
+
+        <Navigation>
+          <Button onClick={this.props.backPage} text="back" />
+          <Button
+            onClick={this.props.nextPage}
+            disabled={!this.isComplete()}
+            text="next"
+          />
+        </Navigation>
       </React.Fragment>
     );
   }

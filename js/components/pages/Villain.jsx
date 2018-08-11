@@ -1,25 +1,21 @@
 class Villain extends React.Component {
+  isComplete() {
+    return this.props.position && this.props.bigBlinds;
+  }
+
   render() {
-    var postionButtons = this.props.positions.map((position, i) => {
-      var selected = "";
-      if (this.props.position === position) {
-        selected = "selected";
-      }
+    const postionButtons = this.props.positions.map(position => (
+      <Button
+        onClick={() => {
+          this.props.update(event, "villainPosition");
+        }}
+        selected={this.props.position === position}
+        value={position}
+        text={position}
+      />
+    ));
 
-      return (
-        <button
-          onClick={() => {
-            this.props.update(event, "villainPosition");
-          }}
-          className={selected}
-          value={position}
-        >
-          {position}
-        </button>
-      );
-    });
-
-    return(
+    return (
       <React.Fragment>
         <Heading text="villain details" />
 
@@ -38,7 +34,15 @@ class Villain extends React.Component {
         <Heading text="position" />
         <Row limit="5">{postionButtons}</Row>
 
+        <Navigation>
+          <Button onClick={this.props.backPage} text="back" />
+          <Button
+            onClick={this.props.nextPage}
+            disabled={!this.isComplete()}
+            text="next"
+          />
+        </Navigation>
       </React.Fragment>
-    )
+    );
   }
 }

@@ -18,8 +18,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      pageIndex: 2,
-      players: 9,
+      pageIndex: 0,
+      players: null,
       heroCardOne: null,
       heroCardOneSuit: null,
       heroCardTwo: null,
@@ -27,7 +27,8 @@ class App extends React.Component {
       heroBigBlinds: 100,
       heroPosition: null,
       villainBigBlinds: 100,
-      villainPosition: null
+      villainPosition: null,
+      villainStyle: 0
     };
     this.pages = [
       "home",
@@ -78,6 +79,8 @@ class App extends React.Component {
         return (
           <Game
             players={this.state.players}
+            nextPage={this.nextPage.bind(this)}
+            backPage={this.backPage.bind(this)}
             updatePlayers={() => {
               this.updateField(event, "players");
             }}
@@ -96,6 +99,8 @@ class App extends React.Component {
             position={this.state.heroPosition}
             minBigBlinds={this.minBigBlinds}
             maxBigBlinds={this.maxBigBlinds}
+            nextPage={this.nextPage.bind(this)}
+            backPage={this.backPage.bind(this)}
           />
         );
       case "villain":
@@ -107,16 +112,39 @@ class App extends React.Component {
             position={this.state.villainPosition}
             minBigBlinds={this.minBigBlinds}
             maxBigBlinds={this.maxBigBlinds}
+            style={this.state.villainStyle}
+            nextPage={this.nextPage.bind(this)}
+            backPage={this.backPage.bind(this)}
           />
         );
       case "preFlop":
-        return <PreFlop />;
+        return (
+          <PreFlop
+            nextPage={this.nextPage.bind(this)}
+            backPage={this.backPage.bind(this)}
+          />
+        );
       case "flop":
-        return <Flop />;
+        return (
+          <Flop
+            nextPage={this.nextPage.bind(this)}
+            backPage={this.backPage.bind(this)}
+          />
+        );
       case "turn":
-        return <Turn />;
+        return (
+          <Turn
+            nextPage={this.nextPage.bind(this)}
+            backPage={this.backPage.bind(this)}
+          />
+        );
       case "river":
-        return <River />;
+        return (
+          <River
+            nextPage={this.nextPage.bind(this)}
+            backPage={this.backPage.bind(this)}
+          />
+        );
       default:
         return <Home next={this.nextPage.bind(this)} />;
     }
@@ -139,17 +167,7 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div className="display">
-        {this.renderPage()}
-        {this.currentPage() != "home" ? (
-          <Navigation>
-            <button onClick={this.backPage.bind(this)}>back</button>
-            <button onClick={this.nextPage.bind(this)}>next</button>
-          </Navigation>
-        ) : null}
-      </div>
-    );
+    return <div className="display">{this.renderPage()}</div>;
   }
 }
 

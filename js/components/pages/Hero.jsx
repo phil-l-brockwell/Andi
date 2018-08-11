@@ -19,101 +19,72 @@ class Hero extends React.Component {
     this.suits = ["♦", "♣", "♠", "♥"];
   }
 
+  isComplete() {
+    return (
+      this.props.bigBlinds &&
+      this.props.position &&
+      this.props.cardOne &&
+      this.props.cardOneSuit &&
+      this.props.cardTwo &&
+      this.props.cardTwoSuit
+    );
+  }
+
   render() {
-    var cardOneButtons = this.cards.map((card, i) => {
-      var selected = "";
-      if (this.props.cardOne === card) {
-        selected = "selected";
-      }
+    const cardOneButtons = this.cards.map(card => (
+      <Button
+        onClick={() => {
+          this.props.update(event, "heroCardOne");
+        }}
+        value={card}
+        selected={this.props.cardOne === card}
+        text={card}
+      />
+    ));
 
-      return (
-        <button
-          onClick={() => {
-            this.props.update(event, "heroCardOne");
-          }}
-          value={card}
-          className={selected}
-        >
-          {card}
-        </button>
-      );
-    });
+    const cardTwoButtons = this.cards.map(card => (
+      <Button
+        onClick={() => {
+          this.props.update(event, "heroCardTwo");
+        }}
+        value={card}
+        selected={this.props.cardTwo === card}
+        text={card}
+      />
+    ));
 
-    var cardTwoButtons = this.cards.map((card, i) => {
-      var selected = "";
-      if (this.props.cardTwo === card) {
-        selected = "selected";
-      }
+    const cardOneSuitButtons = this.suits.map(suit => (
+      <Button
+        onClick={() => {
+          this.props.update(event, "heroCardOneSuit");
+        }}
+        value={suit}
+        selected={this.props.cardOneSuit === suit}
+        text={suit}
+      />
+    ));
 
-      return (
-        <button
-          onClick={() => {
-            this.props.update(event, "heroCardTwo");
-          }}
-          value={card}
-          className={selected}
-        >
-          {card}
-        </button>
-      );
-    });
+    const cardTwoSuitButtons = this.suits.map(suit => (
+      <Button
+        onClick={() => {
+          this.props.update(event, "heroCardTwoSuit");
+        }}
+        value={suit}
+        selected={this.props.cardTwoSuit === suit}
+        text={suit}
+      />
+    ));
 
-    var cardOneSuitButtons = this.suits.map((suit, i) => {
-      var selected = "";
-      if (this.props.cardOneSuit === suit) {
-        selected = "selected";
-      }
-
-      return (
-        <button
-          onClick={() => {
-            this.props.update(event, "heroCardOneSuit");
-          }}
-          value={suit}
-          className={selected}
-        >
-          {suit}
-        </button>
-      );
-    });
-
-    var cardTwoSuitButtons = this.suits.map((suit, i) => {
-      var selected = "";
-      if (this.props.cardTwoSuit === suit) {
-        selected = "selected";
-      }
-
-      return (
-        <button
-          onClick={() => {
-            this.props.update(event, "heroCardTwoSuit");
-          }}
-          value={suit}
-          className={selected}
-        >
-          {suit}
-        </button>
-      );
-    });
-
-    var postionButtons = this.props.positions.map((position, i) => {
-      var selected = "";
-      if (this.props.position === position) {
-        selected = "selected";
-      }
-
-      return (
-        <button
-          onClick={() => {
-            this.props.update(event, "heroPosition");
-          }}
-          className={selected}
-          value={position}
-        >
-          {position}
-        </button>
-      );
-    });
+    const postionButtons = this.props.positions.map(position => (
+      <Button
+        onClick={() => {
+          this.props.update(event, "heroPosition");
+        }}
+        selected={this.props.position === position}
+        value={position}
+        text={position}
+      />
+    ));
 
     return (
       <React.Fragment>
@@ -139,6 +110,15 @@ class Hero extends React.Component {
         <Row>{cardOneSuitButtons}</Row>
         <Row>{cardTwoButtons}</Row>
         <Row>{cardTwoSuitButtons}</Row>
+
+        <Navigation>
+          <Button onClick={this.props.backPage} text="back" />
+          <Button
+            onClick={this.props.nextPage}
+            disabled={!this.isComplete()}
+            text="next"
+          />
+        </Navigation>
       </React.Fragment>
     );
   }

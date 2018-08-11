@@ -3,15 +3,15 @@ class Home extends React.Component {
     return (
       <React.Fragment>
         <Row>
-          <button onClick={this.props.next}>Review a Hand</button>
+          <Button onClick={this.props.next} text="Review a Hand" />
         </Row>
 
         <Row>
-          <button className="disabled">Hand History</button>
+          <Button disabled="true" text="Hand History" />
         </Row>
 
         <Row>
-          <button className="disabled">Settings</button>
+          <Button disabled="true" text="Settings" />
         </Row>
       </React.Fragment>
     );
