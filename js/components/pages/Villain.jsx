@@ -4,17 +4,6 @@ class Villain extends React.Component {
   }
 
   render() {
-    const postionButtons = this.props.positions.map(position => (
-      <Button
-        onClick={() => {
-          this.props.update(event, "villainPosition");
-        }}
-        selected={this.props.position === position}
-        value={position}
-        text={position}
-      />
-    ));
-
     return (
       <Page
         name="villian"
@@ -35,7 +24,14 @@ class Villain extends React.Component {
         </Row>
 
         <Heading text="position" />
-        <Row limit="5">{postionButtons}</Row>
+        <PositionButtons
+          disabled={this.props.disabledPositions}
+          selected={this.props.position}
+          positions={this.props.positions}
+          update={() => {
+            this.props.update(event, "villainPosition");
+          }}
+        />
       </Page>
     );
   }

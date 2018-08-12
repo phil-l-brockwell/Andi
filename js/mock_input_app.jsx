@@ -20,9 +20,9 @@ class App extends React.Component {
     this.state = {
       pageIndex: 0,
       players: null,
-      heroCardOne: null,
+      heroCardOneRank: null,
       heroCardOneSuit: null,
-      heroCardTwo: null,
+      heroCardTwoRank: null,
       heroCardTwoSuit: null,
       heroBigBlinds: 100,
       heroPosition: null,
@@ -90,9 +90,10 @@ class App extends React.Component {
         return (
           <Hero
             positions={this.availablePositions()}
-            cardOne={this.state.heroCardOne}
+            disabledPositions={[this.state.villainPosition]}
+            cardOneRank={this.state.heroCardOneRank}
             cardOneSuit={this.state.heroCardOneSuit}
-            cardTwo={this.state.heroCardTwo}
+            cardTwoRank={this.state.heroCardTwoRank}
             cardTwoSuit={this.state.heroCardTwoSuit}
             bigBlinds={this.state.heroBigBlinds}
             update={this.updateField.bind(this)}
@@ -107,6 +108,7 @@ class App extends React.Component {
         return (
           <Villain
             positions={this.availablePositions()}
+            disabledPositions={[this.state.heroPosition]}
             bigBlinds={this.state.villainBigBlinds}
             update={this.updateField.bind(this)}
             position={this.state.villainPosition}

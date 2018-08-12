@@ -23,9 +23,9 @@ class Hero extends React.Component {
     return (
       this.props.bigBlinds &&
       this.props.position &&
-      this.props.cardOne &&
+      this.props.cardOneRank &&
       this.props.cardOneSuit &&
-      this.props.cardTwo &&
+      this.props.cardTwoRank &&
       this.props.cardTwoSuit
     );
   }
@@ -34,10 +34,10 @@ class Hero extends React.Component {
     const cardOneButtons = this.cards.map(card => (
       <Button
         onClick={() => {
-          this.props.update(event, "heroCardOne");
+          this.props.update(event, "heroCardOneRank");
         }}
         value={card}
-        selected={this.props.cardOne === card}
+        selected={this.props.cardOneRank === card}
         text={card}
       />
     ));
@@ -45,10 +45,10 @@ class Hero extends React.Component {
     const cardTwoButtons = this.cards.map(card => (
       <Button
         onClick={() => {
-          this.props.update(event, "heroCardTwo");
+          this.props.update(event, "heroCardTwoRank");
         }}
         value={card}
-        selected={this.props.cardTwo === card}
+        selected={this.props.cardTwoRank === card}
         text={card}
       />
     ));
@@ -75,17 +75,6 @@ class Hero extends React.Component {
       />
     ));
 
-    const postionButtons = this.props.positions.map(position => (
-      <Button
-        onClick={() => {
-          this.props.update(event, "heroPosition");
-        }}
-        selected={this.props.position === position}
-        value={position}
-        text={position}
-      />
-    ));
-
     return (
       <Page
         name="hero"
@@ -106,7 +95,14 @@ class Hero extends React.Component {
         </Row>
 
         <Heading text="position" />
-        <Row limit="5">{postionButtons}</Row>
+        <PositionButtons
+          disabled={this.props.disabledPositions}
+          selected={this.props.position}
+          positions={this.props.positions}
+          update={() => {
+            this.props.update(event, "heroPosition");
+          }}
+        />
 
         <Heading text="hole cards" />
         <Row>{cardOneButtons}</Row>
