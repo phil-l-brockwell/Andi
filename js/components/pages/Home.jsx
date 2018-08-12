@@ -1,7 +1,7 @@
 class Home extends React.Component {
   render() {
     return (
-      <React.Fragment>
+      <div className="display">
         <Row>
           <Button onClick={this.props.next} text="Review a Hand" />
         </Row>
@@ -13,7 +13,7 @@ class Home extends React.Component {
         <Row>
           <Button disabled="true" text="Settings" />
         </Row>
-      </React.Fragment>
+      </div>
     );
   }
 }

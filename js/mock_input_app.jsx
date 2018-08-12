@@ -167,7 +167,7 @@ class App extends React.Component {
   }
 
   render() {
-    return <div className="display">{this.renderPage()}</div>;
+    return this.renderPage();
   }
 }
 

@@ -24,9 +24,12 @@ class Game extends React.Component {
     }
 
     return (
-      <React.Fragment>
-        <Heading text="game details" />
-
+      <Page
+        name="game"
+        backPage={this.props.backPage}
+        nextPage={this.props.nextPage}
+        isComplete={this.isComplete.bind(this)}
+      >
         <Heading text="type" />
         <Row>
           <Button text="cash" selected="true" />
@@ -35,16 +38,7 @@ class Game extends React.Component {
 
         <Heading text="players" />
         <Row>{playerButtons}</Row>
-
-        <Navigation>
-          <Button onClick={this.props.backPage} text="back" />
-          <Button
-            onClick={this.props.nextPage}
-            disabled={!this.isComplete()}
-            text="next"
-          />
-        </Navigation>
-      </React.Fragment>
+      </Page>
     );
   }
 }

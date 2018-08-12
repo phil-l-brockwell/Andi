@@ -87,9 +87,12 @@ class Hero extends React.Component {
     ));
 
     return (
-      <React.Fragment>
-        <Heading text="hero details" />
-
+      <Page
+        name="hero"
+        nextPage={this.props.nextPage}
+        backPage={this.props.backPage}
+        isComplete={this.isComplete.bind(this)}
+      >
         <Heading text="big blinds" />
         <Row>
           <Slider
@@ -110,16 +113,7 @@ class Hero extends React.Component {
         <Row>{cardOneSuitButtons}</Row>
         <Row>{cardTwoButtons}</Row>
         <Row>{cardTwoSuitButtons}</Row>
-
-        <Navigation>
-          <Button onClick={this.props.backPage} text="back" />
-          <Button
-            onClick={this.props.nextPage}
-            disabled={!this.isComplete()}
-            text="next"
-          />
-        </Navigation>
-      </React.Fragment>
+      </Page>
     );
   }
 }

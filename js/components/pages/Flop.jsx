@@ -4,19 +4,13 @@ class Flop extends React.Component {
   }
 
   render() {
-    return(
-      <React.Fragment>
-        <Heading text="flop details" />
-
-        <Navigation>
-          <Button onClick={this.props.backPage} text="back" />
-          <Button
-            onClick={this.props.nextPage}
-            disabled={!this.isComplete()}
-            text="next"
-          />
-        </Navigation>
-      </React.Fragment>
-    )
+    return (
+      <Page
+        name="flop"
+        backPage={this.props.backPage}
+        nextPage={this.props.nextPage}
+        isComplete={this.isComplete.bind(this)}
+      />
+    );
   }
 }

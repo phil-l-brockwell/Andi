@@ -16,9 +16,12 @@ class Villain extends React.Component {
     ));
 
     return (
-      <React.Fragment>
-        <Heading text="villain details" />
-
+      <Page
+        name="villian"
+        nextPage={this.props.nextPage}
+        backPage={this.props.backPage}
+        isComplete={this.isComplete.bind(this)}
+      >
         <Heading text="big blinds" />
         <Row>
           <Slider
@@ -33,16 +36,7 @@ class Villain extends React.Component {
 
         <Heading text="position" />
         <Row limit="5">{postionButtons}</Row>
-
-        <Navigation>
-          <Button onClick={this.props.backPage} text="back" />
-          <Button
-            onClick={this.props.nextPage}
-            disabled={!this.isComplete()}
-            text="next"
-          />
-        </Navigation>
-      </React.Fragment>
+      </Page>
     );
   }
 }

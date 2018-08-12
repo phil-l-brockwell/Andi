@@ -4,19 +4,13 @@ class Turn extends React.Component {
   }
 
   render() {
-    return(
-      <React.Fragment>
-        <Heading text="turn details" />
-
-        <Navigation>
-          <Button onClick={this.props.backPage} text="back" />
-          <Button
-            onClick={this.props.nextPage}
-            disabled={!this.isComplete()}
-            text="next"
-          />
-        </Navigation>
-      </React.Fragment>
-    )
+    return (
+      <Page
+        name="turn"
+        nextPage={this.props.nextPage}
+        backPage={this.props.backPage}
+        isComplete={this.isComplete.bind(this)}
+      />
+    );
   }
 }
