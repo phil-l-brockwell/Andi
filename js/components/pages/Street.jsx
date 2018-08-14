@@ -39,6 +39,16 @@ class Street extends React.Component {
     this.props.updateCardArray(updatedArray, this.props.name);
   }
 
+  cardsHeading() {
+    var s = "card";
+
+    if (this.props.cards.length > 1) {
+      s += "s";
+    }
+
+    return s;
+  }
+
   render() {
     return (
       <Page
@@ -47,7 +57,7 @@ class Street extends React.Component {
         backPage={this.props.backPage}
         isComplete={this.isComplete.bind(this)}
       >
-        <Heading text="card" />
+        <Heading text={this.cardsHeading()} />
         <Cards cards={this.props.cards} />
         <CardSelector
           update={this.updateCard.bind(this)}
