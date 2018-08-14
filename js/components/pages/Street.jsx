@@ -7,6 +7,14 @@ class Street extends React.Component {
     return this.props.cards.slice(-1)[0];
   }
 
+  isCardsArrayDirty() {
+    return this.props.cards.some(card => {
+      return (
+        card.rank || card.suit
+      );
+    });
+  }
+
   currentCard() {
     return (
       this.props.cards.find(card => {
@@ -58,12 +66,13 @@ class Street extends React.Component {
         isComplete={this.isComplete.bind(this)}
       >
         <Heading text={this.cardsHeading()} />
-        <Cards cards={this.props.cards} />
+        <Cards cards={this.props.cards} currentCard={this.currentCard()} />
         <CardSelector
           update={this.updateCard.bind(this)}
           clear={this.clearCards.bind(this)}
           disabledCards={this.props.selectedCards}
           currentCard={this.currentCard()}
+          isCardsArrayDirty={this.isCardsArrayDirty()}
         />
       </Page>
     );

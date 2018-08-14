@@ -20,7 +20,7 @@ class Button extends React.Component {
   }
 
   classString() {
-    var s = "";
+    var s = this.props.className;
 
     if (this.props.disabled) {
       s += " disabled";

@@ -67,7 +67,12 @@ class CardSelector extends React.Component {
         <Row>{rankButtons}</Row>
         <Row>{suitButtons}</Row>
         <Row>
-          <Button onClick={this.props.clear} text="clear" />
+          <Button
+            onClick={this.props.clear}
+            text="clear"
+            disabled={!this.props.isCardsArrayDirty}
+            className="clear"
+          />
         </Row>
       </React.Fragment>
     );

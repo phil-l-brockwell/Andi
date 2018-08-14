@@ -56,6 +56,10 @@ button {
   font-weight: 100;
 }
 
+button.clear {
+  background-color: chocolate;
+}
+
 button.disabled {
   background-color: grey;
 }
@@ -137,6 +141,10 @@ div.row.navigation {
 .card.diamonds { color: blue;  }
 .card.hearts   { color: red;   }
 .card.clubs    { color: green; }
+
+.card.active {
+  border-color: red;
+}
 
 .suit {
   font-size: 15px;
