@@ -33,12 +33,8 @@ class App extends React.Component {
         { id: 2, rank: null, suit: null },
         { id: 3, rank: null, suit: null }
       ],
-      turnCards: [
-        { id: 1, rank: null, suit: null }
-      ],
-      riverCards: [
-        { id: 1, rank: null, suit: null }
-      ]
+      turnCards: [{ id: 1, rank: null, suit: null }],
+      riverCards: [{ id: 1, rank: null, suit: null }]
     };
     this.pages = [
       "home",
@@ -85,6 +81,14 @@ class App extends React.Component {
     }
   }
 
+  selectedCards() {
+    return this.state.preflopCards.concat(
+      this.state.flopCards,
+      this.state.turnCards,
+      this.state.riverCards
+    );
+  }
+
   renderPage() {
     switch (this.currentPage()) {
       case "home":
@@ -129,43 +133,17 @@ class App extends React.Component {
           />
         );
       case "preflop":
-        return (
-          <Street
-            name="preflop"
-            nextPage={this.nextPage.bind(this)}
-            backPage={this.backPage.bind(this)}
-            cards={this.state.preflopCards}
-            updateCardArray={this.updateCardArray.bind(this)}
-          />
-        );
       case "flop":
-        return (
-          <Street
-            name="flop"
-            nextPage={this.nextPage.bind(this)}
-            backPage={this.backPage.bind(this)}
-            cards={this.state.flopCards}
-            updateCardArray={this.updateCardArray.bind(this)}
-          />
-        );
       case "turn":
-        return (
-          <Street
-            name="turn"
-            nextPage={this.nextPage.bind(this)}
-            backPage={this.backPage.bind(this)}
-            cards={this.state.turnCards}
-            updateCardArray={this.updateCardArray.bind(this)}
-          />
-        );
       case "river":
         return (
           <Street
-            name="river"
+            name={this.currentPage()}
             nextPage={this.nextPage.bind(this)}
             backPage={this.backPage.bind(this)}
-            cards={this.state.riverCards}
+            cards={this.state[this.currentPage() + 'Cards']}
             updateCardArray={this.updateCardArray.bind(this)}
+            selectedCards={this.selectedCards()}
           />
         );
       default:

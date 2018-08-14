@@ -1,7 +1,7 @@
 class CardSelector extends React.Component {
   constructor() {
     super();
-    this.cards = [
+    this.ranks = [
       "A",
       "2",
       "3",
@@ -19,31 +19,53 @@ class CardSelector extends React.Component {
     this.suits = ["diamonds", "clubs", "spades", "hearts"];
   }
 
+  isRankDisabled(rank) {
+    return this.props.disabledCards.some(disabledCard => {
+      return (
+        disabledCard.rank === rank &&
+        disabledCard.suit === this.props.currentCard.suit
+      );
+    });
+  }
+
+  isSuitDisabled(suit) {
+    return this.props.disabledCards.some(disabledCard => {
+      return (
+        disabledCard.suit === suit &&
+        disabledCard.rank === this.props.currentCard.rank
+      );
+    });
+  }
+
   render() {
-    const cardOneRankButtons = this.cards.map(card => (
+    const rankButtons = this.ranks.map(rank => (
       <Button
         onClick={() => {
           this.props.update(event, "rank");
         }}
-        value={card}
-        text={card}
+        value={rank}
+        text={rank}
+        selected={this.props.currentCard.rank === rank}
+        disabled={this.isRankDisabled(rank)}
       />
     ));
 
-    const cardOneSuitButtons = this.suits.map(suit => (
+    const suitButtons = this.suits.map(suit => (
       <Button
         onClick={() => {
           this.props.update(event, "suit");
         }}
         value={suit}
         text={suit}
+        selected={this.props.currentCard.suit === suit}
+        disabled={this.isSuitDisabled(suit)}
       />
     ));
 
     return (
       <React.Fragment>
-        <Row>{cardOneRankButtons}</Row>
-        <Row>{cardOneSuitButtons}</Row>
+        <Row>{rankButtons}</Row>
+        <Row>{suitButtons}</Row>
         <Row>
           <Button onClick={this.props.clear} text="clear" />
         </Row>

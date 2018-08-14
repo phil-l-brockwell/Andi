@@ -62,6 +62,8 @@ class Street extends React.Component {
         <CardSelector
           update={this.updateCard.bind(this)}
           clear={this.clearCards.bind(this)}
+          disabledCards={this.props.selectedCards}
+          currentCard={this.currentCard()}
         />
       </Page>
     );
