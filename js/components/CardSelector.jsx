@@ -68,6 +68,11 @@ class CardSelector extends React.Component {
 
     return (
       <React.Fragment>
+        <CardDisplay
+          cards={this.props.cards}
+          currentCard={this.props.currentCard}
+          suits={this.suits}
+        />
         <Row>{rankButtons}</Row>
         <Row>{suitButtons}</Row>
         <Row>

@@ -66,13 +66,13 @@ class Street extends React.Component {
         isComplete={this.isComplete.bind(this)}
       >
         <Heading text={this.cardsHeading()} />
-        <Cards cards={this.props.cards} currentCard={this.currentCard()} />
         <CardSelector
           update={this.updateCard.bind(this)}
           clear={this.clearCards.bind(this)}
           disabledCards={this.props.selectedCards}
           currentCard={this.currentCard()}
           isCardsArrayDirty={this.isCardsArrayDirty()}
+          cards={this.props.cards}
         />
       </Page>
     );
