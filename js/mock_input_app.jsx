@@ -89,6 +89,10 @@ class App extends React.Component {
     );
   }
 
+  selectedPositions() {
+    return [this.state.heroPosition, this.state.villainPosition];
+  }
+
   renderPage() {
     switch (this.currentPage()) {
       case "home":
@@ -105,27 +109,15 @@ class App extends React.Component {
           />
         );
       case "hero":
-        return (
-          <Hero
-            positions={this.availablePositions()}
-            disabledPositions={[this.state.villainPosition]}
-            bigBlinds={this.state.heroBigBlinds}
-            update={this.updateField.bind(this)}
-            position={this.state.heroPosition}
-            minBigBlinds={this.minBigBlinds}
-            maxBigBlinds={this.maxBigBlinds}
-            nextPage={this.nextPage.bind(this)}
-            backPage={this.backPage.bind(this)}
-          />
-        );
       case "villain":
         return (
-          <Villain
+          <Player
+            name={this.currentPage()}
             positions={this.availablePositions()}
-            disabledPositions={[this.state.heroPosition]}
-            bigBlinds={this.state.villainBigBlinds}
+            disabledPositions={this.selectedPositions()}
+            bigBlinds={this.state[this.currentPage() + "BigBlinds"]}
             update={this.updateField.bind(this)}
-            position={this.state.villainPosition}
+            position={this.state[this.currentPage() + "Position"]}
             minBigBlinds={this.minBigBlinds}
             maxBigBlinds={this.maxBigBlinds}
             nextPage={this.nextPage.bind(this)}
@@ -141,13 +133,11 @@ class App extends React.Component {
             name={this.currentPage()}
             nextPage={this.nextPage.bind(this)}
             backPage={this.backPage.bind(this)}
-            cards={this.state[this.currentPage() + 'Cards']}
+            cards={this.state[this.currentPage() + "Cards"]}
             updateCardArray={this.updateCardArray.bind(this)}
             selectedCards={this.selectedCards()}
           />
         );
-      default:
-        return <Home next={this.nextPage.bind(this)} />;
     }
   }
 
