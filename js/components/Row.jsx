@@ -1,7 +1,7 @@
 class Row extends React.Component {
   render() {
     if (!this.props.limit) {
-      return <div className="row">{this.props.children}</div>;
+      return <div className={this.classString()}>{this.props.children}</div>;
     }
 
     var test = React.Children.toArray(this.props.children).reduce(
@@ -21,8 +21,18 @@ class Row extends React.Component {
 
     return (
       <React.Fragment>
-        {test.map(children => <div className="row">{children}</div>)}
+        {test.map(children => <div className={this.classString()}>{children}</div>)}
       </React.Fragment>
     );
+  }
+
+  classString() {
+    var s = "row ";
+
+    if (this.props.className) {
+      s += this.props.className;
+    }
+
+    return s;
   }
 }

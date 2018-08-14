@@ -73,6 +73,7 @@ div.row {
   justify-content: space-between;
   flex: 0 0 10%;
   margin-top: 1px;
+  margin-bottom: 5px;
 }
 
 div.row:last-of-type {
@@ -86,6 +87,10 @@ div.row.heading {
   flex-direction: column;
   text-align: center;
   text-decoration: underline;
+}
+
+div.row.center-content {
+  justify-content: center;
 }
 
 div.row:first-child { margin-top: 0; }
@@ -115,6 +120,43 @@ div.row.navigation {
   left: 0;
   right: 0;
   text-align: center;
+}
+
+.card {
+  width: 35px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.card.spades   { color: black; }
+.card.diamonds { color: blue;  }
+.card.hearts   { color: red;   }
+.card.clubs    { color: green; }
+
+.suit {
+  font-size: 15px;
+}
+
+.rank {
+  position: absolute;
+  font-size: 14px;
+  font-weight: 900;
+  margin: 1px;
+}
+
+.rank.top {
+  top: 0;
+  left: 0;
+}
+
+.rank.bottom {
+  bottom: 0;
+  right: 0;
 }
 
 h1, h2, h3, h4, h5, h6, p {

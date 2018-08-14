@@ -20,22 +20,32 @@ class App extends React.Component {
     this.state = {
       pageIndex: 0,
       players: null,
-      heroCardOneRank: null,
-      heroCardOneSuit: null,
-      heroCardTwoRank: null,
-      heroCardTwoSuit: null,
       heroBigBlinds: 100,
       heroPosition: null,
       villainBigBlinds: 100,
       villainPosition: null,
-      villainStyle: 0
+      preflopCards: [
+        { id: 1, rank: null, suit: null },
+        { id: 2, rank: null, suit: null }
+      ],
+      flopCards: [
+        { id: 1, rank: null, suit: null },
+        { id: 2, rank: null, suit: null },
+        { id: 3, rank: null, suit: null }
+      ],
+      turnCards: [
+        { id: 1, rank: null, suit: null }
+      ],
+      riverCards: [
+        { id: 1, rank: null, suit: null }
+      ]
     };
     this.pages = [
       "home",
       "game",
       "hero",
       "villain",
-      "preFlop",
+      "preflop",
       "flop",
       "turn",
       "river"
@@ -62,6 +72,10 @@ class App extends React.Component {
 
   updateField(e, field) {
     this.setState({ [field]: e.target.value });
+  }
+
+  updateCardArray(updatedArray, arrayName) {
+    this.setState({ [arrayName + "Cards"]: updatedArray });
   }
 
   availablePositions() {
@@ -91,10 +105,6 @@ class App extends React.Component {
           <Hero
             positions={this.availablePositions()}
             disabledPositions={[this.state.villainPosition]}
-            cardOneRank={this.state.heroCardOneRank}
-            cardOneSuit={this.state.heroCardOneSuit}
-            cardTwoRank={this.state.heroCardTwoRank}
-            cardTwoSuit={this.state.heroCardTwoSuit}
             bigBlinds={this.state.heroBigBlinds}
             update={this.updateField.bind(this)}
             position={this.state.heroPosition}
@@ -114,37 +124,48 @@ class App extends React.Component {
             position={this.state.villainPosition}
             minBigBlinds={this.minBigBlinds}
             maxBigBlinds={this.maxBigBlinds}
-            style={this.state.villainStyle}
             nextPage={this.nextPage.bind(this)}
             backPage={this.backPage.bind(this)}
           />
         );
-      case "preFlop":
+      case "preflop":
         return (
-          <PreFlop
+          <Street
+            name="preflop"
             nextPage={this.nextPage.bind(this)}
             backPage={this.backPage.bind(this)}
+            cards={this.state.preflopCards}
+            updateCardArray={this.updateCardArray.bind(this)}
           />
         );
       case "flop":
         return (
-          <Flop
+          <Street
+            name="flop"
             nextPage={this.nextPage.bind(this)}
             backPage={this.backPage.bind(this)}
+            cards={this.state.flopCards}
+            updateCardArray={this.updateCardArray.bind(this)}
           />
         );
       case "turn":
         return (
-          <Turn
+          <Street
+            name="turn"
             nextPage={this.nextPage.bind(this)}
             backPage={this.backPage.bind(this)}
+            cards={this.state.turnCards}
+            updateCardArray={this.updateCardArray.bind(this)}
           />
         );
       case "river":
         return (
-          <River
+          <Street
+            name="river"
             nextPage={this.nextPage.bind(this)}
             backPage={this.backPage.bind(this)}
+            cards={this.state.riverCards}
+            updateCardArray={this.updateCardArray.bind(this)}
           />
         );
       default:
