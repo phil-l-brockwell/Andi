@@ -16,7 +16,12 @@ class CardSelector extends React.Component {
       "Q",
       "K"
     ];
-    this.suits = ["diamonds", "clubs", "spades", "hearts"];
+    this.suits = {
+      diamonds: "♦",
+      spades: "♠",
+      hearts: "♥",
+      clubs: "♣"
+    };
   }
 
   isRankDisabled(rank) {
@@ -45,20 +50,19 @@ class CardSelector extends React.Component {
         }}
         value={rank}
         text={rank}
-        selected={this.props.currentCard.rank === rank}
         disabled={this.isRankDisabled(rank)}
       />
     ));
 
-    const suitButtons = this.suits.map(suit => (
+    const suitButtons = Object.keys(this.suits).map((suit, symbol) => (
       <Button
         onClick={() => {
           this.props.update(event, "suit");
         }}
         value={suit}
-        text={suit}
-        selected={this.props.currentCard.suit === suit}
+        text={this.suits[suit]}
         disabled={this.isSuitDisabled(suit)}
+        className="suit-selector"
       />
     ));
 

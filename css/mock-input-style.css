@@ -70,6 +70,10 @@ button.selected {
   font-weight: 900;
 }
 
+button.suit-selector {
+  font-size: 30px;
+}
+
 button:first-child { margin-left: 0; }
 
 div.row {
@@ -135,6 +139,7 @@ div.row.navigation {
   justify-content: center;
   align-items: center;
   position: relative;
+  font-weight: 900;
 }
 
 .card.spades   { color: black; }
@@ -153,7 +158,6 @@ div.row.navigation {
 .rank {
   position: absolute;
   font-size: 14px;
-  font-weight: 900;
   margin: 1px;
 }
 
