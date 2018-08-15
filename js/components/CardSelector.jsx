@@ -25,46 +25,62 @@ class CardSelector extends React.Component {
   }
 
   isRankDisabled(rank) {
-    return this.props.disabledCards.some(disabledCard => {
-      return (
-        disabledCard.rank === rank &&
-        disabledCard.suit === this.props.currentCard.suit
-      );
-    });
+    return (
+      this.props.disabledCards.some(disabledCard => {
+        return (
+          disabledCard.rank === rank &&
+          disabledCard.suit === this.props.currentCard.suit
+        );
+      }) ||
+      this.props.disabledCards.reduce((n, disabledCard) => {
+        return n + (disabledCard.rank === rank);
+      }, 0) === Object.keys(this.suits).length
+    );
   }
 
   isSuitDisabled(suit) {
-    return this.props.disabledCards.some(disabledCard => {
-      return (
-        disabledCard.suit === suit &&
-        disabledCard.rank === this.props.currentCard.rank
-      );
-    });
+    return (
+      this.props.disabledCards.some(disabledCard => {
+        return (
+          disabledCard.suit === suit &&
+          disabledCard.rank === this.props.currentCard.rank
+        );
+      }) ||
+      this.props.disabledCards.reduce((n, disabledCard) => {
+        return n + (disabledCard.suit === suit);
+      }, 0) === this.ranks.length
+    );
   }
 
   render() {
-    const rankButtons = this.ranks.map(rank => (
-      <Button
-        onClick={() => {
-          this.props.update(event, "rank");
-        }}
-        value={rank}
-        text={rank}
-        disabled={this.isRankDisabled(rank)}
-      />
-    ));
+    const rankButtons = this.ranks.map(rank => {
+      if (!this.isRankDisabled(rank)) {
+        return (
+          <Button
+            onClick={() => {
+              this.props.update(event, "rank");
+            }}
+            value={rank}
+            text={rank}
+          />
+        );
+      }
+    });
 
-    const suitButtons = Object.keys(this.suits).map((suit, symbol) => (
-      <Button
-        onClick={() => {
-          this.props.update(event, "suit");
-        }}
-        value={suit}
-        text={this.suits[suit]}
-        disabled={this.isSuitDisabled(suit)}
-        className="suit-selector"
-      />
-    ));
+    const suitButtons = Object.keys(this.suits).map(suit => {
+      if (!this.isSuitDisabled(suit)) {
+        return (
+          <Button
+            onClick={() => {
+              this.props.update(event, "suit");
+            }}
+            value={suit}
+            text={this.suits[suit]}
+            className="suit-selector"
+          />
+        );
+      }
+    });
 
     return (
       <React.Fragment>
