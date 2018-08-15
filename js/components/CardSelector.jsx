@@ -88,6 +88,7 @@ class CardSelector extends React.Component {
           cards={this.props.cards}
           currentCard={this.props.currentCard}
           suits={this.suits}
+          setCurrentCardId={this.props.setCurrentCardId}
         />
         <Row>{rankButtons}</Row>
         <Row>{suitButtons}</Row>

@@ -25,16 +25,16 @@ class App extends React.Component {
       villainBigBlinds: 100,
       villainPosition: null,
       preflopCards: [
+        { id: 0, rank: null, suit: null },
+        { id: 1, rank: null, suit: null }
+      ],
+      flopCards: [
+        { id: 0, rank: null, suit: null },
         { id: 1, rank: null, suit: null },
         { id: 2, rank: null, suit: null }
       ],
-      flopCards: [
-        { id: 1, rank: null, suit: null },
-        { id: 2, rank: null, suit: null },
-        { id: 3, rank: null, suit: null }
-      ],
-      turnCards: [{ id: 1, rank: null, suit: null }],
-      riverCards: [{ id: 1, rank: null, suit: null }]
+      turnCards: [{ id: 0, rank: null, suit: null }],
+      riverCards: [{ id: 0, rank: null, suit: null }]
     };
     this.pages = [
       "home",

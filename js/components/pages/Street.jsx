@@ -1,4 +1,11 @@
 class Street extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      currentCardId: null
+    };
+  }
+
   isComplete() {
     return this.props.cards.every(card => card.rank && card.suit);
   }
@@ -9,17 +16,23 @@ class Street extends React.Component {
 
   isCardsArrayDirty() {
     return this.props.cards.some(card => {
-      return (
-        card.rank || card.suit
-      );
+      return card.rank || card.suit;
     });
+  }
+
+  setCurrentCardId(newId) {
+    this.setState({ currentCardId: newId });
   }
 
   currentCard() {
     return (
       this.props.cards.find(card => {
+        return card.id === this.state.currentCardId;
+      }) ||
+      this.props.cards.find(card => {
         return !card.rank || !card.suit;
-      }) || this.lastCard()
+      }) ||
+      this.lastCard()
     );
   }
 
@@ -31,6 +44,7 @@ class Street extends React.Component {
     }));
 
     this.props.updateCardArray(updatedArray, this.props.name);
+    this.setCurrentCardId(null);
   }
 
   updateCard(event, field) {
@@ -45,6 +59,10 @@ class Street extends React.Component {
     updatedArray.splice(updatedCardIndex, 1, updatedCard);
 
     this.props.updateCardArray(updatedArray, this.props.name);
+
+    if (updatedCard.rank && updatedCard.suit) {
+      this.setCurrentCardId(null);
+    }
   }
 
   cardsHeading() {
@@ -73,6 +91,7 @@ class Street extends React.Component {
           currentCard={this.currentCard()}
           isCardsArrayDirty={this.isCardsArrayDirty()}
           cards={this.props.cards}
+          setCurrentCardId={this.setCurrentCardId.bind(this)}
         />
       </Page>
     );

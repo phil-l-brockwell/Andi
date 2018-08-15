@@ -6,6 +6,8 @@ class CardDisplay extends React.Component {
         rank={card.rank}
         active={this.props.currentCard === card}
         symbol={this.props.suits[card.suit]}
+        setCurrentCardId={this.props.setCurrentCardId}
+        id={card.id}
       />
     ));
 
