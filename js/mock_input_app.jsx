@@ -75,10 +75,7 @@ class App extends React.Component {
   }
 
   availablePositions() {
-    switch (this.players) {
-      default:
-        return this.positions;
-    }
+    return this.positions.slice(-this.state.players);
   }
 
   selectedCards() {
