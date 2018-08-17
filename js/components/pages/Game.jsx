@@ -16,7 +16,7 @@ class Game extends React.Component {
       playerButtons.push(
         <Button
           value={i}
-          onClick={this.props.updatePlayers}
+          onClick={this.props.setPlayers}
           selected={parseInt(this.props.players) === i}
           text={i}
         />

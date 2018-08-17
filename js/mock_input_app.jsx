@@ -34,7 +34,11 @@ class App extends React.Component {
         { id: 2, rank: null, suit: null }
       ],
       turnCards: [{ id: 0, rank: null, suit: null }],
-      riverCards: [{ id: 0, rank: null, suit: null }]
+      riverCards: [{ id: 0, rank: null, suit: null }],
+      preflopActions: [],
+      flopActions: [],
+      turnActions: [],
+      riverActions: []
     };
     this.pages = [
       "home",
@@ -66,12 +70,32 @@ class App extends React.Component {
     return this.pages[this.state.pageIndex];
   }
 
+  setPlayers(e) {
+    this.setState({ players: e.target.value });
+    this.buildActions();
+  }
+
+  buildActions() {
+    ["preflop", "flop", "turn", "river"].forEach(street => {
+      const actions = this.availablePositions().map(position => ({
+        position: position,
+        type: "call",
+        bet: null
+      }));
+      this.setState({ [street + "Actions"]: actions })
+    });
+  }
+
   updateField(e, field) {
     this.setState({ [field]: e.target.value });
   }
 
   updateCardArray(updatedArray, arrayName) {
     this.setState({ [arrayName + "Cards"]: updatedArray });
+  }
+
+  updateActionArray(updatedArray, arrayName) {
+    this.setState({ [arrayName + "Actions"]: updatedArray });
   }
 
   availablePositions() {
@@ -100,9 +124,7 @@ class App extends React.Component {
             players={this.state.players}
             nextPage={this.nextPage.bind(this)}
             backPage={this.backPage.bind(this)}
-            updatePlayers={() => {
-              this.updateField(event, "players");
-            }}
+            setPlayers={this.setPlayers.bind(this)}
           />
         );
       case "hero":
@@ -132,7 +154,10 @@ class App extends React.Component {
             backPage={this.backPage.bind(this)}
             cards={this.state[this.currentPage() + "Cards"]}
             updateCardArray={this.updateCardArray.bind(this)}
+            updateActionArray={this.updateActionArray.bind(this)}
             selectedCards={this.selectedCards()}
+            positions={this.availablePositions()}
+            actions={this.state[this.currentPage() + "Actions"]}
           />
         );
     }

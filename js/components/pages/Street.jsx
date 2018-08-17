@@ -65,6 +65,10 @@ class Street extends React.Component {
     }
   }
 
+  updateActions(updatedArray) {
+    this.props.updateActionArray(updatedArray, this.props.name);
+  }
+
   cardsHeading() {
     var s = "card";
 
@@ -92,6 +96,11 @@ class Street extends React.Component {
           isCardsArrayDirty={this.isCardsArrayDirty()}
           cards={this.props.cards}
           setCurrentCardId={this.setCurrentCardId.bind(this)}
+        />
+        <Heading text="actions" />
+        <ActionDisplay
+          actions={this.props.actions}
+          updateActions={this.updateActions.bind(this)}
         />
       </Page>
     );
